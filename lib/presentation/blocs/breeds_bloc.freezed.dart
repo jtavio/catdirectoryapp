@@ -55,12 +55,13 @@ extension BreedsEventPatterns on BreedsEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( BreedsFetched value)?  fetched,TResult Function( BreedsRefreshed value)?  refreshed,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( BreedsFetched value)?  fetched,TResult Function( BreedsRefreshed value)?  refreshed,TResult Function( BreedsSearched value)?  searched,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case BreedsFetched() when fetched != null:
 return fetched(_that);case BreedsRefreshed() when refreshed != null:
-return refreshed(_that);case _:
+return refreshed(_that);case BreedsSearched() when searched != null:
+return searched(_that);case _:
   return orElse();
 
 }
@@ -78,12 +79,13 @@ return refreshed(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( BreedsFetched value)  fetched,required TResult Function( BreedsRefreshed value)  refreshed,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( BreedsFetched value)  fetched,required TResult Function( BreedsRefreshed value)  refreshed,required TResult Function( BreedsSearched value)  searched,}){
 final _that = this;
 switch (_that) {
 case BreedsFetched():
 return fetched(_that);case BreedsRefreshed():
-return refreshed(_that);case _:
+return refreshed(_that);case BreedsSearched():
+return searched(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -100,12 +102,13 @@ return refreshed(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( BreedsFetched value)?  fetched,TResult? Function( BreedsRefreshed value)?  refreshed,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( BreedsFetched value)?  fetched,TResult? Function( BreedsRefreshed value)?  refreshed,TResult? Function( BreedsSearched value)?  searched,}){
 final _that = this;
 switch (_that) {
 case BreedsFetched() when fetched != null:
 return fetched(_that);case BreedsRefreshed() when refreshed != null:
-return refreshed(_that);case _:
+return refreshed(_that);case BreedsSearched() when searched != null:
+return searched(_that);case _:
   return null;
 
 }
@@ -122,11 +125,12 @@ return refreshed(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  fetched,TResult Function()?  refreshed,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  fetched,TResult Function()?  refreshed,TResult Function( String query)?  searched,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case BreedsFetched() when fetched != null:
 return fetched();case BreedsRefreshed() when refreshed != null:
-return refreshed();case _:
+return refreshed();case BreedsSearched() when searched != null:
+return searched(_that.query);case _:
   return orElse();
 
 }
@@ -144,11 +148,12 @@ return refreshed();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  fetched,required TResult Function()  refreshed,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  fetched,required TResult Function()  refreshed,required TResult Function( String query)  searched,}) {final _that = this;
 switch (_that) {
 case BreedsFetched():
 return fetched();case BreedsRefreshed():
-return refreshed();case _:
+return refreshed();case BreedsSearched():
+return searched(_that.query);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -165,11 +170,12 @@ return refreshed();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  fetched,TResult? Function()?  refreshed,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  fetched,TResult? Function()?  refreshed,TResult? Function( String query)?  searched,}) {final _that = this;
 switch (_that) {
 case BreedsFetched() when fetched != null:
 return fetched();case BreedsRefreshed() when refreshed != null:
-return refreshed();case _:
+return refreshed();case BreedsSearched() when searched != null:
+return searched(_that.query);case _:
   return null;
 
 }
@@ -240,6 +246,72 @@ String toString() {
 
 
 
+
+/// @nodoc
+
+
+class BreedsSearched implements BreedsEvent {
+  const BreedsSearched(this.query);
+  
+
+ final  String query;
+
+/// Create a copy of BreedsEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$BreedsSearchedCopyWith<BreedsSearched> get copyWith => _$BreedsSearchedCopyWithImpl<BreedsSearched>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BreedsSearched&&(identical(other.query, query) || other.query == query));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,query);
+
+@override
+String toString() {
+  return 'BreedsEvent.searched(query: $query)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $BreedsSearchedCopyWith<$Res> implements $BreedsEventCopyWith<$Res> {
+  factory $BreedsSearchedCopyWith(BreedsSearched value, $Res Function(BreedsSearched) _then) = _$BreedsSearchedCopyWithImpl;
+@useResult
+$Res call({
+ String query
+});
+
+
+
+
+}
+/// @nodoc
+class _$BreedsSearchedCopyWithImpl<$Res>
+    implements $BreedsSearchedCopyWith<$Res> {
+  _$BreedsSearchedCopyWithImpl(this._self, this._then);
+
+  final BreedsSearched _self;
+  final $Res Function(BreedsSearched) _then;
+
+/// Create a copy of BreedsEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? query = null,}) {
+  return _then(BreedsSearched(
+null == query ? _self.query : query // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
 
 /// @nodoc
 mixin _$BreedsState {

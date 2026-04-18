@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$BreedModel {
 
-@JsonKey(name: 'id') String get id;@JsonKey(name: 'name') String get name;@JsonKey(name: 'origin') String get origin;@JsonKey(name: 'description') String get description;@JsonKey(name: 'temperament') String get temperament;@JsonKey(name: 'life_span') String get lifeSpan;@JsonKey(name: 'image_url') String? get imageUrl;
+@JsonKey(name: 'breed') String get breed;@JsonKey(name: 'country') String get country;@JsonKey(name: 'origin') String get origin;@JsonKey(name: 'coat') String? get coat;@JsonKey(name: 'pattern') String? get pattern;
 /// Create a copy of BreedModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $BreedModelCopyWith<BreedModel> get copyWith => _$BreedModelCopyWithImpl<BreedMo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BreedModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.origin, origin) || other.origin == origin)&&(identical(other.description, description) || other.description == description)&&(identical(other.temperament, temperament) || other.temperament == temperament)&&(identical(other.lifeSpan, lifeSpan) || other.lifeSpan == lifeSpan)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BreedModel&&(identical(other.breed, breed) || other.breed == breed)&&(identical(other.country, country) || other.country == country)&&(identical(other.origin, origin) || other.origin == origin)&&(identical(other.coat, coat) || other.coat == coat)&&(identical(other.pattern, pattern) || other.pattern == pattern));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,origin,description,temperament,lifeSpan,imageUrl);
+int get hashCode => Object.hash(runtimeType,breed,country,origin,coat,pattern);
 
 @override
 String toString() {
-  return 'BreedModel(id: $id, name: $name, origin: $origin, description: $description, temperament: $temperament, lifeSpan: $lifeSpan, imageUrl: $imageUrl)';
+  return 'BreedModel(breed: $breed, country: $country, origin: $origin, coat: $coat, pattern: $pattern)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $BreedModelCopyWith<$Res>  {
   factory $BreedModelCopyWith(BreedModel value, $Res Function(BreedModel) _then) = _$BreedModelCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'id') String id,@JsonKey(name: 'name') String name,@JsonKey(name: 'origin') String origin,@JsonKey(name: 'description') String description,@JsonKey(name: 'temperament') String temperament,@JsonKey(name: 'life_span') String lifeSpan,@JsonKey(name: 'image_url') String? imageUrl
+@JsonKey(name: 'breed') String breed,@JsonKey(name: 'country') String country,@JsonKey(name: 'origin') String origin,@JsonKey(name: 'coat') String? coat,@JsonKey(name: 'pattern') String? pattern
 });
 
 
@@ -65,15 +65,13 @@ class _$BreedModelCopyWithImpl<$Res>
 
 /// Create a copy of BreedModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? origin = null,Object? description = null,Object? temperament = null,Object? lifeSpan = null,Object? imageUrl = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? breed = null,Object? country = null,Object? origin = null,Object? coat = freezed,Object? pattern = freezed,}) {
   return _then(_self.copyWith(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+breed: null == breed ? _self.breed : breed // ignore: cast_nullable_to_non_nullable
+as String,country: null == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
 as String,origin: null == origin ? _self.origin : origin // ignore: cast_nullable_to_non_nullable
-as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String,temperament: null == temperament ? _self.temperament : temperament // ignore: cast_nullable_to_non_nullable
-as String,lifeSpan: null == lifeSpan ? _self.lifeSpan : lifeSpan // ignore: cast_nullable_to_non_nullable
-as String,imageUrl: freezed == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
+as String,coat: freezed == coat ? _self.coat : coat // ignore: cast_nullable_to_non_nullable
+as String?,pattern: freezed == pattern ? _self.pattern : pattern // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -159,10 +157,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'id')  String id, @JsonKey(name: 'name')  String name, @JsonKey(name: 'origin')  String origin, @JsonKey(name: 'description')  String description, @JsonKey(name: 'temperament')  String temperament, @JsonKey(name: 'life_span')  String lifeSpan, @JsonKey(name: 'image_url')  String? imageUrl)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'breed')  String breed, @JsonKey(name: 'country')  String country, @JsonKey(name: 'origin')  String origin, @JsonKey(name: 'coat')  String? coat, @JsonKey(name: 'pattern')  String? pattern)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _BreedModel() when $default != null:
-return $default(_that.id,_that.name,_that.origin,_that.description,_that.temperament,_that.lifeSpan,_that.imageUrl);case _:
+return $default(_that.breed,_that.country,_that.origin,_that.coat,_that.pattern);case _:
   return orElse();
 
 }
@@ -180,10 +178,10 @@ return $default(_that.id,_that.name,_that.origin,_that.description,_that.tempera
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'id')  String id, @JsonKey(name: 'name')  String name, @JsonKey(name: 'origin')  String origin, @JsonKey(name: 'description')  String description, @JsonKey(name: 'temperament')  String temperament, @JsonKey(name: 'life_span')  String lifeSpan, @JsonKey(name: 'image_url')  String? imageUrl)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'breed')  String breed, @JsonKey(name: 'country')  String country, @JsonKey(name: 'origin')  String origin, @JsonKey(name: 'coat')  String? coat, @JsonKey(name: 'pattern')  String? pattern)  $default,) {final _that = this;
 switch (_that) {
 case _BreedModel():
-return $default(_that.id,_that.name,_that.origin,_that.description,_that.temperament,_that.lifeSpan,_that.imageUrl);case _:
+return $default(_that.breed,_that.country,_that.origin,_that.coat,_that.pattern);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -200,10 +198,10 @@ return $default(_that.id,_that.name,_that.origin,_that.description,_that.tempera
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'id')  String id, @JsonKey(name: 'name')  String name, @JsonKey(name: 'origin')  String origin, @JsonKey(name: 'description')  String description, @JsonKey(name: 'temperament')  String temperament, @JsonKey(name: 'life_span')  String lifeSpan, @JsonKey(name: 'image_url')  String? imageUrl)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'breed')  String breed, @JsonKey(name: 'country')  String country, @JsonKey(name: 'origin')  String origin, @JsonKey(name: 'coat')  String? coat, @JsonKey(name: 'pattern')  String? pattern)?  $default,) {final _that = this;
 switch (_that) {
 case _BreedModel() when $default != null:
-return $default(_that.id,_that.name,_that.origin,_that.description,_that.temperament,_that.lifeSpan,_that.imageUrl);case _:
+return $default(_that.breed,_that.country,_that.origin,_that.coat,_that.pattern);case _:
   return null;
 
 }
@@ -215,16 +213,14 @@ return $default(_that.id,_that.name,_that.origin,_that.description,_that.tempera
 @JsonSerializable()
 
 class _BreedModel implements BreedModel {
-  const _BreedModel({@JsonKey(name: 'id') required this.id, @JsonKey(name: 'name') required this.name, @JsonKey(name: 'origin') required this.origin, @JsonKey(name: 'description') required this.description, @JsonKey(name: 'temperament') required this.temperament, @JsonKey(name: 'life_span') required this.lifeSpan, @JsonKey(name: 'image_url') this.imageUrl});
+  const _BreedModel({@JsonKey(name: 'breed') required this.breed, @JsonKey(name: 'country') required this.country, @JsonKey(name: 'origin') required this.origin, @JsonKey(name: 'coat') this.coat, @JsonKey(name: 'pattern') this.pattern});
   factory _BreedModel.fromJson(Map<String, dynamic> json) => _$BreedModelFromJson(json);
 
-@override@JsonKey(name: 'id') final  String id;
-@override@JsonKey(name: 'name') final  String name;
+@override@JsonKey(name: 'breed') final  String breed;
+@override@JsonKey(name: 'country') final  String country;
 @override@JsonKey(name: 'origin') final  String origin;
-@override@JsonKey(name: 'description') final  String description;
-@override@JsonKey(name: 'temperament') final  String temperament;
-@override@JsonKey(name: 'life_span') final  String lifeSpan;
-@override@JsonKey(name: 'image_url') final  String? imageUrl;
+@override@JsonKey(name: 'coat') final  String? coat;
+@override@JsonKey(name: 'pattern') final  String? pattern;
 
 /// Create a copy of BreedModel
 /// with the given fields replaced by the non-null parameter values.
@@ -239,16 +235,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BreedModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.origin, origin) || other.origin == origin)&&(identical(other.description, description) || other.description == description)&&(identical(other.temperament, temperament) || other.temperament == temperament)&&(identical(other.lifeSpan, lifeSpan) || other.lifeSpan == lifeSpan)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BreedModel&&(identical(other.breed, breed) || other.breed == breed)&&(identical(other.country, country) || other.country == country)&&(identical(other.origin, origin) || other.origin == origin)&&(identical(other.coat, coat) || other.coat == coat)&&(identical(other.pattern, pattern) || other.pattern == pattern));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,origin,description,temperament,lifeSpan,imageUrl);
+int get hashCode => Object.hash(runtimeType,breed,country,origin,coat,pattern);
 
 @override
 String toString() {
-  return 'BreedModel(id: $id, name: $name, origin: $origin, description: $description, temperament: $temperament, lifeSpan: $lifeSpan, imageUrl: $imageUrl)';
+  return 'BreedModel(breed: $breed, country: $country, origin: $origin, coat: $coat, pattern: $pattern)';
 }
 
 
@@ -259,7 +255,7 @@ abstract mixin class _$BreedModelCopyWith<$Res> implements $BreedModelCopyWith<$
   factory _$BreedModelCopyWith(_BreedModel value, $Res Function(_BreedModel) _then) = __$BreedModelCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'id') String id,@JsonKey(name: 'name') String name,@JsonKey(name: 'origin') String origin,@JsonKey(name: 'description') String description,@JsonKey(name: 'temperament') String temperament,@JsonKey(name: 'life_span') String lifeSpan,@JsonKey(name: 'image_url') String? imageUrl
+@JsonKey(name: 'breed') String breed,@JsonKey(name: 'country') String country,@JsonKey(name: 'origin') String origin,@JsonKey(name: 'coat') String? coat,@JsonKey(name: 'pattern') String? pattern
 });
 
 
@@ -276,15 +272,13 @@ class __$BreedModelCopyWithImpl<$Res>
 
 /// Create a copy of BreedModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? origin = null,Object? description = null,Object? temperament = null,Object? lifeSpan = null,Object? imageUrl = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? breed = null,Object? country = null,Object? origin = null,Object? coat = freezed,Object? pattern = freezed,}) {
   return _then(_BreedModel(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+breed: null == breed ? _self.breed : breed // ignore: cast_nullable_to_non_nullable
+as String,country: null == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
 as String,origin: null == origin ? _self.origin : origin // ignore: cast_nullable_to_non_nullable
-as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String,temperament: null == temperament ? _self.temperament : temperament // ignore: cast_nullable_to_non_nullable
-as String,lifeSpan: null == lifeSpan ? _self.lifeSpan : lifeSpan // ignore: cast_nullable_to_non_nullable
-as String,imageUrl: freezed == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
+as String,coat: freezed == coat ? _self.coat : coat // ignore: cast_nullable_to_non_nullable
+as String?,pattern: freezed == pattern ? _self.pattern : pattern // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }

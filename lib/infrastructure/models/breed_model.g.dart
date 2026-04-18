@@ -7,22 +7,18 @@ part of 'breed_model.dart';
 // **************************************************************************
 
 _BreedModel _$BreedModelFromJson(Map<String, dynamic> json) => _BreedModel(
-  id: json['id'] as String,
-  name: json['name'] as String,
+  breed: json['breed'] as String,
+  country: json['country'] as String,
   origin: json['origin'] as String,
-  description: json['description'] as String,
-  temperament: json['temperament'] as String,
-  lifeSpan: json['life_span'] as String,
-  imageUrl: json['image_url'] as String?,
+  coat: json['coat'] as String?,
+  pattern: json['pattern'] as String?,
 );
 
 Map<String, dynamic> _$BreedModelToJson(_BreedModel instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
+      'breed': instance.breed,
+      'country': instance.country,
       'origin': instance.origin,
-      'description': instance.description,
-      'temperament': instance.temperament,
-      'life_span': instance.lifeSpan,
-      'image_url': instance.imageUrl,
+      'coat': instance.coat,
+      'pattern': instance.pattern,
     };

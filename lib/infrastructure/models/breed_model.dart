@@ -8,27 +8,25 @@ part 'breed_model.g.dart';
 @freezed
 abstract class BreedModel with _$BreedModel {
   const factory BreedModel({
-    @JsonKey(name: 'id') required String id,
-    @JsonKey(name: 'name') required String name,
+    @JsonKey(name: 'breed') required String breed,
+    @JsonKey(name: 'country') required String country,
     @JsonKey(name: 'origin') required String origin,
-    @JsonKey(name: 'description') required String description,
-    @JsonKey(name: 'temperament') required String temperament,
-    @JsonKey(name: 'life_span') required String lifeSpan,
-    @JsonKey(name: 'image_url') String? imageUrl,
+    @JsonKey(name: 'coat') String? coat,
+    @JsonKey(name: 'pattern') String? pattern,
   }) = _BreedModel;
 
-  factory BreedModel.fromJson(Map<String, dynamic> json) =>
-      _$BreedModelFromJson(json);
+  factory BreedModel.fromJson(Map<String, dynamic> json) => _$BreedModelFromJson(json);
 }
 
 extension BreedModelX on BreedModel {
   Breed toDomain() => Breed(
-        id: id,
-        name: name,
-        origin: origin,
-        description: description,
-        temperament: temperament,
-        lifeSpan: lifeSpan,
-        imageUrl: imageUrl,
-      );
+    id: breed.replaceAll(' ', '_').toLowerCase(),
+    name: breed,
+    origin: country,
+    description:
+        'A $breed cat with ${coat ?? 'unknown'} coat and ${pattern ?? 'unknown'} pattern. Originated as $origin.',
+    temperament: pattern ?? 'Unknown',
+    lifeSpan: '12-15',
+    imageUrl: null,
+  );
 }
