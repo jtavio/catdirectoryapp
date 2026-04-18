@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'breed.freezed.dart';
 
 @freezed
-class Breed with _$Breed {
+abstract class Breed with _$Breed {
   const factory Breed({
     required String id,
     required String name,
